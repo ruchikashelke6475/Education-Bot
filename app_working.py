@@ -27,16 +27,6 @@ user_api_key = st.sidebar.text_input(
     placeholder="Paste your openAI API key, sk-",
     type="password")
 
-# Initialize session states
-if "generated" not in st.session_state:
-    st.session_state["generated"] = []
-if "past" not in st.session_state:
-    st.session_state["past"] = []
-if "input" not in st.session_state:
-    st.session_state["input"] = ""
-if "stored_session" not in st.session_state:
-    st.session_state["stored_session"] = []
-
 os.environ["OPENAI_API_KEY"] = user_api_key
 # Initialize the selected model
 openai.api_key = user_api_key  # Replace with your OpenAI API key
@@ -55,15 +45,6 @@ pdf_mapping = {
     'GPT4 All Training': '2023_GPT4All_Technical_Report.pdf',
     # Add more mappings as needed
 }
-
-save = []
-for i in range(len(st.session_state['generated'])-1, -1, -1):
-    save.append("User:" + st.session_state["past"][i])
-    save.append("Bot:" + st.session_state["generated"][i])        
-st.session_state["stored_session"].append(save)
-st.session_state["generated"] = []
-st.session_state["past"] = []
-st.session_state["input"] = ""
 
 # Main Streamlit app
 def main():
@@ -188,9 +169,6 @@ def main():
                     response = result["result"]
                 else:
                     response = result["answer"]
-
-                st.session_state.past.append(prompt)  
-                st.session_state.generated.append(response)
     
                 for chunk in response.split():
                     full_response += chunk + " "
@@ -198,22 +176,6 @@ def main():
                     message_placeholder.markdown(full_response + "|")
                 message_placeholder.markdown(full_response)
             st.session_state.messages.append({"role": "assistant", "content": full_response})
-
-    # Allow to download as well
-    download_str = ""
-    for i in range(len(st.session_state['generated'])):
-        st.session_state["stored_session"].append("User:" + st.session_state["past"][i])
-        st.session_state["stored_session"].append("Bot:" + st.session_state["generated"][i])
-
-    # Append each conversation to the download_str
-    # Append each conversation to the download_str
-    for entry in st.session_state["stored_session"]:
-        if isinstance(entry, list):
-            download_str += " ".join(entry) + "\n"
-        else:
-            download_str += entry + "\n"
-    if download_str:
-         st.download_button('Download',download_str)
         
 
 if __name__ == "__main__":
