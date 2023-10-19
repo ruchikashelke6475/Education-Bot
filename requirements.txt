@@ -1,0 +1,10 @@
+streamlit
+pandas
+langchain
+pypdf2
+openai
+matplotlib
+plotly
+tiktoken
+faiss-cpu
+python-dotenv
