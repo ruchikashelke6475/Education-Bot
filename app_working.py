@@ -212,7 +212,6 @@ def main():
             download_str += " ".join(entry) + "\n"
         else:
             download_str += entry + "\n"
-)
     if download_str:
          st.download_button('Download',download_str)
         
