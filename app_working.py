@@ -21,6 +21,12 @@ import time
 
 # Layout as wide and adding custom title
 st.set_page_config(page_title="EduGPT", layout="wide")
+
+user_api_key = st.sidebar.text_input(
+    label="#### Your OpenAI API key 👇",
+    placeholder="Paste your openAI API key, sk-",
+    type="password")
+
 # Initialize session states
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -31,9 +37,9 @@ if "input" not in st.session_state:
 if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = user_api_key
 # Initialize the selected model
-openai.api_key = "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"  # Replace with your OpenAI API key
+openai.api_key = user_api_key  # Replace with your OpenAI API key
 
 def read_pdf(file_path):
     # load the document as before
