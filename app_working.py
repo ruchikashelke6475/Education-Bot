@@ -31,6 +31,7 @@ os.environ["OPENAI_API_KEY"] = user_api_key
 # Initialize the selected model
 openai.api_key = user_api_key  # Replace with your OpenAI API key
 
+@st.cache_data
 def read_pdf(file_path):
     # load the document as before
     loader = UnstructuredPDFLoader(file_path)
