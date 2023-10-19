@@ -41,9 +41,8 @@ def read_pdf(file_path):
 # Mapping of PDFs
 pdf_mapping = {
     'English Book': 'English.pdf',
-    'Tax Regime': 'New-vs-Old-Tax.pdf',
-    'Reinforcement Learning': 'SuttonBartoIPRLBook2ndEd.pdf',
-    'GPT4 All Training': '2023_GPT4All_Technical_Report.pdf',
+    'Economics Book': 'Economics.pdf',
+    'Science Book': 'Science.pdf',
     # Add more mappings as needed
 }
 
