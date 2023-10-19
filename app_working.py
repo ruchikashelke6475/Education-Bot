@@ -53,7 +53,7 @@ def main():
         st.title('EduBOT')
         st.markdown('''
         ## About
-        Choose the desired PDF, select a model, and then perform a query.
+        Choose the desired PDF, select a model and retrieval method, and then perform a query.
         ''')
 
     custom_names = list(pdf_mapping.keys())
