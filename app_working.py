@@ -119,15 +119,13 @@ def main():
         llm = ChatOpenAI(temperature=temperature, max_tokens=1000, model_name=selected_model)
 
         if selected_retrieval == "Conversational Retrieval":
-            qa = ConversationalRetrievalChain.from_llm(
-                                                        llm, 
+            qa = ConversationalRetrievalChain.from_llm(llm, 
                                                         vectorstore.as_retriever(),
                                                         get_chat_history=lambda o:o,
                                                         return_generated_question=True,
                                                         verbose=False,
                                                         memory=memory,
-                                                        return_source_documents=True
-                )
+                                                        return_source_documents=True)
 
         elif selected_retrieval == "Retrieval QA":
             qa = RetrievalQA.from_chain_type(
