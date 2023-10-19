@@ -10,4 +10,5 @@ faiss-cpu
 python-dotenv
 unstructured
 pdf2image
-pdfminerpdfminer.six
+pdfminer
+pdfminer.six
