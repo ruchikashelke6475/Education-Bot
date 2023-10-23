@@ -1,0 +1,7 @@
+Instructions to run the code.
+
+1. Open the extracted folder in VS code(IDE)
+2. go to terminal
+3. Install dependencies by running the command 'pip install -r requirements.txt'
+4. run the app using the below command from terminal 
+	streamlit run app_working.py
