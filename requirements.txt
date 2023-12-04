@@ -13,3 +13,4 @@ pdf2image
 pdfminer
 pdfminer.six
 pikepdf
+pypdf
